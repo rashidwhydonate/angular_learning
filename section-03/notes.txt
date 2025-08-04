@@ -1,0 +1,60 @@
+1. Components
+- Defined using @Component decorator.
+- Contains: selector, template/templateUrl, styleUrls/styles.
+- Handles logic and state of a view.
+
+Example:
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent {
+  title = 'my-app';
+}
+
+2. Data Binding
+- Interpolation: {{ title }} — Output data to template.
+- Property Binding: [disabled]="isDisabled"
+- Event Binding: (click)="onClick()"
+- Two-Way Binding: [(ngModel)]="inputValue"
+  - Requires `FormsModule` to be imported.
+
+3. Directives
+- Structural Directives: *ngIf, *ngFor, *ngSwitch
+- Attribute Directives: [ngClass], [ngStyle]
+- Custom Directives: Use @Directive decorator.
+
+4. Services & Dependency Injection
+- Logic reuse across components.
+- Create with `ng generate service my-service`
+- Inject using constructor:  
+  constructor(private myService: MyService) {}
+- Provided in `@Injectable({ providedIn: 'root' })`
+
+5. Forms in Angular
+- Template-driven Forms (simple, less code):
+  - Use `FormsModule`
+  - Use [(ngModel)] and validation directives like `required`
+- Reactive Forms (structured, more control):
+  - Use `ReactiveFormsModule`
+  - Create FormGroup and FormControl in component:
+    this.form = new FormGroup({
+      name: new FormControl('', Validators.required)
+    });
+
+6. TypeScript Basics for Angular
+- Strong typing (string, number, boolean, any, etc.)
+- Interfaces for defining object shapes.
+- Classes for components, services.
+- Decorators: e.g., @Component, @Injectable
+- Access modifiers: public, private, protected
+
+7. LocalStorage & SessionStorage
+- Store key-value pairs in browser.
+- Usage:
+  localStorage.setItem('key', 'value');
+  const val = localStorage.getItem('key');
+  localStorage.removeItem('key');
+
+  sessionStorage works similarly, but data lasts only per session.
