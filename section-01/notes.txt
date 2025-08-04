@@ -1,0 +1,87 @@
+=========================
+ANGULAR - Getting Started
+=========================
+
+1. What is Angular?
+-------------------
+Angular is a frontend JavaScript framework developed and maintained by Google.
+It helps build interactive, modern web user interfaces.
+
+It includes:
+- Angular CLI (Command Line Interface)
+- Debugging tools
+- IDE plugins
+- RxJS, Angular Material, Angular Universal, etc.
+
+-----------------------------------
+2. Angular: Evolution & Stability
+-----------------------------------
+
+Evolution:
+- AngularJS (2010):
+  - Original version (1.x)
+  - Built with JavaScript and MVC pattern
+  - Featured two-way data binding
+  - Faced performance and scalability issues
+
+- Angular 2+ (2016+):
+  - Complete rewrite in TypeScript
+  - Component-based architecture
+  - Improved modularity, performance, and tooling
+
+Stability:
+- Backed by Google
+- Widely used in enterprise apps
+- Follows Semantic Versioning (updates every 6 months)
+- Backward compatibility and upgrade tools available
+  - Angular CLI
+  - Angular Update Guide
+- Strong ecosystem: RxJS, Angular Material, Angular Universal
+
+--------------------------------------
+3. Creating a New Angular Project
+--------------------------------------
+
+Step 1: Prerequisites
+- Install Node.js (LTS version recommended)
+- Install Angular CLI globally:
+
+  npm install -g @angular/cli
+
+Step 2: Create a New Project
+
+  ng new project-name
+
+Prompts:
+- Routing: Choose Yes if you need navigation
+- Styles: Choose between CSS, SCSS, etc.
+
+Step 3: Serve the Application
+
+  cd project-name
+  ng serve
+
+Runs the app at: http://localhost:4200/
+
+--------------------------------------
+4. Angular Project Structure Overview
+--------------------------------------
+
+src/app/           -> Main application code
+app.component.ts   -> Root component logic
+app.component.html -> Root component template
+app.component.css  -> Root component styles
+angular.json       -> Angular project config
+package.json       -> NPM dependencies and scripts
+
+--------------------------------------
+5. Generate New Components
+--------------------------------------
+
+To create a new component:
+
+  ng generate component component-name
+
+Or shorthand:
+
+  ng g c component-name
