@@ -1,0 +1,75 @@
+MODULE INTRODUCTION
+-------------------
+Angular uses modules to organize an application into cohesive blocks of functionality.
+A module is a context for a set of related components, services, directives, and pipes.
+The root module is typically named AppModule.
+Modules help with code organization, lazy loading, and encapsulation.
+
+INTRODUCTION TO ANGULAR MODULES
+-------------------------------
+Angular modules are defined using the @NgModule decorator.
+The metadata includes declarations, imports, providers, and bootstrap.
+Modules can import other modules to use their exported components and services.
+Modular architecture enhances maintainability and scalability.
+
+ANGULAR 19 STANDALONE COMPONENTS AND MODULES
+--------------------------------------------
+Angular 14 and above introduced standalone components to reduce reliance on NgModules.
+Angular 19 promotes using standalone components and APIs for better simplicity.
+Standalone components use 'standalone: true' in their @Component decorator.
+They can be directly used in routing and bootstrapping.
+Modules are still useful for shared functionality and organizing larger apps.
+
+CREATING A FIRST EMPTY MODULE
+-----------------------------
+Use CLI: ng generate module my-module
+This creates a my-module.module.ts file with @NgModule boilerplate.
+You can start adding declarations or imports later.
+
+BOOTSTRAPPING APPS WITH ANGULAR MODULES
+---------------------------------------
+Main entry point: main.ts
+Bootstraps root module with platformBrowserDynamic().bootstrapModule(AppModule)
+The AppModule bootstraps the root component, usually AppComponent.
+
+DECLARING AND USING COMPONENTS
+------------------------------
+Components are declared in a module via declarations array.
+Use components in templates after importing the module they are declared in.
+CLI: ng generate component my-component automatically declares it.
+
+A FIRST SUMMARY
+---------------
+Modules are containers for components and services.
+Angular supports both module-based and standalone component architectures.
+Bootstrapping and organizing app structure begins with AppModule or a standalone setup.
+Components must be declared and imported properly to be used.
+
+MIGRATING ALL COMPONENTS TO USE MODULES
+---------------------------------------
+Identify all components not declared in any module.
+Move them to a specific NgModule and declare them.
+Update any imports or exports if sharing between modules is needed.
+
+CREATING AND USING SHARED MODULES
+---------------------------------
+Shared modules contain common components, directives, pipes, and services.
+Typically named SharedModule.
+Export reusable declarations so other modules can import them.
+Avoid providing services in shared modules; use CoreModule for singleton services.
+
+CREATING MORE COMPLEX BASED APP STRUCTURES
+------------------------------------------
+Use feature modules for domain-specific logic, like UserModule or AdminModule.
+Use lazy loading with Angular Router for performance benefits.
+Use core module for singleton services, only imported in AppModule.
+Use shared module for reusable UI elements, imported across multiple modules.
+
+Recommended folder structure:
+  /app
+    /core
+    /shared
+    /features
+    /routing
+    app.component.ts
+    app.module.ts
