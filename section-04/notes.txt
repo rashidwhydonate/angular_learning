@@ -1,0 +1,23 @@
+Project Title:  Investment Calculator
+
+Features:
+- User can check the investment results using Investment Calculator.
+- Calculate and list all investments in a table.
+- Responsive UI for mobile & desktop
+
+Folder Structure:
+src/
+├── app/
+│   ├── components/
+│   │   ├── header/
+│   │   ├── investment-form/
+|   |   ├── investment-results/
+│   ├── models/
+│   │   └── investment.model.ts
+│   ├── utils/
+│   │   └── investment.utils.ts
+│   └── app.component.html
+|   └── app.component.ts
+|__ index.html
+|__ main.ts
+|__ styles.css
