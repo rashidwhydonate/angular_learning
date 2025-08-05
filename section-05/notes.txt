@@ -1,0 +1,36 @@
+1. Module Introduction
+----------------------
+- Debugging is a crucial part of Angular development.
+- Angular provides several tools and practices for identifying, understanding, and fixing errors.
+- This module covers both compile-time and runtime debugging techniques using browser tools and Angular-specific extensions.
+
+2. Understanding Error Messages and Fixing Errors
+-------------------------------------------------
+- Angular shows compile-time and runtime errors in the browser console.
+- Common error types:
+  - Template Errors (e.g., "Cannot read property of undefined")
+  - Binding Errors (e.g., using a property not defined in the component)
+  - Module or Component loading errors
+- Best Practices:
+  - Read the full stack trace in the browser console
+  - Use error line numbers to trace back to the component or HTML file
+  - Fix undefined variables, invalid bindings, or typos in templates or component logic
+
+3. Debugging Logical Errors with DevTools and Breakpoints
+----------------------------------------------------------
+- Logical errors do not throw visible exceptions but lead to unexpected behavior.
+- Use Browser DevTools (F12) to:
+  - Inspect element bindings and live DOM structure
+  - Set breakpoints in the "Sources" tab inside `.ts` files
+  - Use watch expressions and step-by-step debugging
+- Console logs (console.log) are helpful for quick checks, but breakpoints provide more insight and control.
+
+4. Exploring Angular DevTools
+-----------------------------
+- Angular DevTools is a Chrome/Firefox extension for debugging Angular applications.
+- Features include:
+  - Component tree navigation and state inspection
+  - Viewing input and output properties of components
+  - Performance profiling and change detection cycle inspection
+- Install via Chrome Web Store: "Angular DevTools"
+- Once installed, access it via the "Angular" tab in Chrome DevTools when running an Angular app in development mode.
