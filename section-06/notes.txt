@@ -1,0 +1,45 @@
+Angular Content Projection
+==========================
+
+1. What is Content Projection?
+- A way to pass HTML content from a parent component into a child component.
+- Enables component reusability while allowing the parent to control parts of the child’s view.
+- Works using the <ng-content> directive.
+
+Basic Syntax
+------------
+Child Component Template:
+<div class="card">
+  <ng-content></ng-content>
+</div>
+
+Parent Component Template:
+<app-card>
+  <p>This text is projected inside the card!</p>
+</app-card>
+
+Types of Content Projection
+--------------------------
+
+a) Single-Slot Projection
+- One <ng-content> in the child.
+- All content passed from the parent replaces it.
+
+b) Multi-Slot Projection
+- Multiple <ng-content> tags, each with a select attribute to filter elements.
+
+Example:
+Child:
+<div class="card">
+  <header><ng-content select="header"></ng-content></header>
+  <section><ng-content></ng-content></section>
+  <footer><ng-content select=".footer"></ng-content></footer>
+</div>
+
+Parent:
+<app-card>
+  <header>Title here</header>
+  <p>Main body content</p>
+  <div class="footer">Footer text</div>
+</app-card>
+
