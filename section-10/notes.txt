@@ -1,0 +1,47 @@
+1. What is Change Detection?
+
+* Change Detection in Angular is the process that keeps the view (DOM) in sync with the component's data (model).
+* Angular runs change detection to check for changes in data and update the UI accordingly.
+
+2. How Change Detection Works
+
+* Angular uses zones (Zone.js) to detect when asynchronous operations (like events, HTTP calls, timers) happen.
+* After these operations, Angular runs change detection across the component tree.
+* By default, Angular uses the Default Change Detection strategy which checks all components.
+
+3. Change Detection Strategies
+
+* Default: Runs for all components when any data might change.
+* OnPush: Runs only when @Input() properties change or when an event inside the component triggers change detection. Improves performance.
+
+4. When is Change Detection Triggered?
+
+* User events (click, input, etc.)
+* HTTP requests (promises/observables)
+* Timers (setTimeout, setInterval)
+* Manual calls to ApplicationRef.tick() or ChangeDetectorRef.detectChanges()
+
+5. Key Classes and Methods
+
+* ChangeDetectorRef: Used to control change detection manually.
+
+  * markForCheck(): Marks the component for checking.
+  * detectChanges(): Runs change detection for the component.
+  * detach(): Detaches the component from the change detection tree.
+  * reattach(): Reattaches a detached component.
+
+6. Example Usage
+   @Component({
+   selector: 'app-user',
+   template: '{{ user.name }}',
+   changeDetection: ChangeDetectionStrategy.OnPush
+   })
+   export class UserComponent {
+   @Input() user: any;
+   }
+
+7. Common Pitfalls
+
+* Forgetting to update reference for @Input() when using OnPush.
+* Overusing detectChanges() leading to performance overhead.
+* Not detaching unused components when required.
