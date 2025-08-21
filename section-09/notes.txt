@@ -1,0 +1,43 @@
+1. What are Services?
+
+* Services in Angular are classes that provide specific functionality and can be reused across components and modules.
+* They encapsulate business logic and promote modularity.
+* Examples: Logging service, Authentication service, Data service (fetching data from API).
+
+2. Features of Angular Services
+
+* Usually singletons (created once and shared by Angular's injector).
+* Independent and focused on a single responsibility.
+* Reusable across components, directives, and modules.
+
+3. What is Dependency Injection (DI) in Angular?
+
+* A design pattern where Angular's injector provides dependencies instead of creating them inside a class.
+* Improves decoupling, testability, and maintainability.
+* Uses Angular's built-in DI framework.
+
+4. Types of Dependency Injection in Angular
+
+* Constructor Injection: Dependencies passed via constructor (most common).
+* Optional: Use @Optional() for optional dependencies.
+* Hierarchical Injection: Services can be provided at root, module, or component level.
+
+5. Benefits of Dependency Injection in Angular
+
+* Reduces tight coupling between components and services.
+* Makes components easier to test (supports mocking services).
+* Supports Inversion of Control (IoC) with Angular's injector system.
+
+6. How DI Works in Angular
+
+* Create a service class (e.g., via Angular CLI: ng generate service service-name).
+* Decorate with @Injectable() to make it injectable.
+* Provide the service in the root (using providedIn: 'root') or in a specific module/component.
+* Inject the service via constructor in components or other services.
+
+7. Best Practices in Angular
+
+* Keep services focused on one task (Single Responsibility Principle).
+* Prefer constructor injection for dependencies.
+* Avoid using service locators or manually instantiating services with 'new'.
+* Use providedIn: 'root' for app-wide singletons, and provideIn module/component for scoped services.
