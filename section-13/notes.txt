@@ -1,0 +1,73 @@
+1. Types of Forms in Angular
+- Template-driven forms: Easier, suitable for simple forms.
+- Reactive forms: More scalable, robust, and testable.
+
+2. Import Modules
+- Template-driven: FormsModule
+- Reactive: ReactiveFormsModule
+
+@NgModule({
+  imports: [FormsModule, ReactiveFormsModule]
+})
+
+3. Template-driven Forms
+- Uses [(ngModel)] for two-way binding.
+Example (HTML):
+<form #f="ngForm" (ngSubmit)="onSubmit(f)">
+  <input name="username" ngModel required />
+  <input type="email" name="email" ngModel />
+  <button type="submit">Submit</button>
+</form>
+
+Component:
+onSubmit(form: NgForm) {
+  console.log(form.value);
+}
+
+4. Reactive Forms
+- Uses FormControl, FormGroup, FormBuilder.
+
+Example:
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
+form: FormGroup;
+constructor(private fb: FormBuilder) {
+  this.form = this.fb.group({
+    username: ['', Validators.required],
+    email: ['', [Validators.required, Validators.email]]
+  });
+}
+
+HTML:
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <input formControlName="username" />
+  <input formControlName="email" />
+  <button type="submit">Submit</button>
+</form>
+
+Component:
+onSubmit() {
+  console.log(this.form.value);
+}
+
+5. Form Validation
+- Template-driven: Use required, minlength, maxlength, email attributes.
+- Reactive: Use Validators like Validators.required, Validators.email.
+
+Access validation:
+<form [formGroup]="form">
+  <input formControlName="email" />
+  <div *ngIf="form.get('email')?.invalid && form.get('email')?.touched">
+    Email is invalid
+  </div>
+</form>
+
+6. Listening to Value Changes
+this.form.get('username')?.valueChanges
+  .subscribe(value => console.log(value));
+
+7. Best Practices
+- Use Reactive Forms for complex scenarios.
+- Keep validation logic in the component or a separate service.
+- Use async validators for server-side checks.
+- Always import FormsModule/ReactiveFormsModule as required.
