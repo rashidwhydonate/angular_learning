@@ -1,0 +1,62 @@
+1. What is RxJS?
+- Library for reactive programming using Observables.
+- Widely used in Angular (HTTP, events, forms, state).
+
+2. Core Concepts
+- Observable: Produces values over time.
+- Observer: Consumes values (next, error, complete).
+- Subscription: Executes observable.
+- Operators: Transform/filter/combine streams.
+- Subject: Both observable & observer.
+
+3. Creating Observables
+import { Observable, of, from } from 'rxjs';
+
+const obs$ = new Observable(observer => {
+  observer.next('Hello');
+  observer.complete();
+});
+
+const obsOf$ = of(1, 2, 3);
+const obsFrom$ = from([1, 2, 3]);
+
+4. Subscribing & Unsubscribing
+const subscription = obs$.subscribe({
+  next: val => console.log(val),
+  error: err => console.error(err),
+  complete: () => console.log('Completed')
+});
+subscription.unsubscribe();
+
+5. Common Operators
+- Creation: of(), from(), interval(), timer()
+- Transformation: map(), switchMap(), mergeMap(), concatMap()
+- Filtering: filter(), debounceTime(), distinctUntilChanged(), take(), takeUntil()
+- Combination: combineLatest(), forkJoin(), withLatestFrom()
+- Utility: tap(), catchError(), finalize()
+
+6. Subjects & Variants
+- Subject: Manual emit (subject.next())
+- BehaviorSubject: Keeps last emitted value
+- ReplaySubject: Replays emissions to new subscribers
+- AsyncSubject: Emits last value on complete
+
+7. RxJS in Angular
+HTTP Example:
+this.http.get('/api/data')
+  .pipe(
+    map(data => data.items),
+    catchError(error => of([]))
+  )
+  .subscribe(result => console.log(result));
+
+Reactive Forms Example:
+this.form.get('search')?.valueChanges
+  .pipe(debounceTime(300), distinctUntilChanged())
+  .subscribe(value => this.search(value));
+
+8. Best Practices
+- Unsubscribe (or use takeUntil() / async pipe).
+- Use async pipe in templates.
+- Avoid nested subscriptions; use switchMap etc.
+- Use BehaviorSubject for shared state.
