@@ -1,0 +1,56 @@
+1. Import HttpClientModule
+- Add to app.module.ts:
+import { HttpClientModule } from '@angular/common/http';
+@NgModule({
+  imports: [HttpClientModule]
+})
+
+2. Inject HttpClient
+- In service or component:
+import { HttpClient } from '@angular/common/http';
+constructor(private http: HttpClient) {}
+
+3. Sending GET Request
+this.http.get('/api/data')
+  .subscribe({
+    next: (response) => console.log(response),
+    error: (err) => console.error(err),
+    complete: () => console.log('Request completed')
+  });
+
+4. Sending POST Request
+const payload = { name: 'John', age: 25 };
+this.http.post('/api/users', payload)
+  .subscribe(res => console.log(res));
+
+5. Sending PUT Request
+this.http.put('/api/users/1', { name: 'Jane' })
+  .subscribe(res => console.log(res));
+
+6. Sending DELETE Request
+this.http.delete('/api/users/1')
+  .subscribe(res => console.log(res));
+
+7. Handling Headers
+import { HttpHeaders } from '@angular/common/http';
+const headers = new HttpHeaders({ 'Authorization': 'Bearer token' });
+this.http.get('/api/data', { headers }).subscribe();
+
+8. Handling Query Params
+import { HttpParams } from '@angular/common/http';
+const params = new HttpParams().set('page', '1').set('limit', '10');
+this.http.get('/api/data', { params }).subscribe();
+
+9. Using RxJS Operators
+this.http.get('/api/items')
+  .pipe(
+    map((data: any) => data.items),
+    catchError(error => of([]))
+  )
+  .subscribe(items => console.log(items));
+
+10. Best Practices
+- Use services for API calls (not directly in components).
+- Handle errors using catchError().
+- Always unsubscribe or use async pipe in templates.
+- Create environment.ts for API base URLs.
