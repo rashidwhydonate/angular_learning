@@ -1,0 +1,38 @@
+Angular Lazy Loading Notes
+
+1.  What is Lazy Loading?
+
+-   Lazy loading is a technique to load feature modules only when they
+    are required.
+-   Helps in reducing the initial bundle size and improves application
+    performance.
+
+2.  Why Use Lazy Loading?
+
+-   Faster initial load time.
+-   Loads modules on demand.
+-   Reduces memory consumption.
+
+3.  How to Implement Lazy Loading?
+
+-   Create a feature module (e.g., AdminModule).
+-   Configure routing for the feature module using
+    RouterModule.forChild().
+-   In AppRoutingModule, use loadChildren property.
+
+Example: const routes: Routes = [ { path: ‘admin’, loadChildren: () =>
+import(‘./admin/admin.module’).then(m => m.AdminModule) }];
+
+4.  Preloading Strategies
+
+-   None (default): Loads modules on demand only.
+-   PreloadAllModules: Preloads all lazy-loaded modules after app loads.
+    Example: RouterModule.forRoot(routes, { preloadingStrategy:
+    PreloadAllModules })
+
+5.  Route Guards for Lazy Loading
+
+-   CanLoad: Prevents loading of the module if the user does not have
+    access. Example: { path: ‘admin’, loadChildren: () =>
+    import(‘./admin/admin.module’).then(m => m.AdminModule), canLoad:
+    [AuthGuard] }
