@@ -1,0 +1,59 @@
+Angular Routing Notes
+
+1.  What is Routing?
+
+-   Enables navigation between components without reloading the entire
+    page (SPA).
+
+2.  Key Modules
+
+-   RouterModule: Import for routing.
+-   Use RouterModule.forRoot(routes) in AppModule.
+-   Use RouterModule.forChild(routes) in feature modules.
+
+3.  Routes
+
+-   Define paths and components. Example: { path: ’‘,
+    redirectTo:’/home’, pathMatch: ‘full’ } { path: ‘home’, component:
+    HomeComponent } { path: ’**’, component: PageNotFoundComponent }
+
+4.  Router Outlet
+
+-    placeholder to display routed components.
+
+5.  RouterLink & RouterLinkActive
+
+-   routerLink=“/path” for navigation.
+-   routerLinkActive=“active” for active link styling.
+
+6.  Navigation via Router
+
+-   Programmatic navigation using Router service:
+    this.router.navigate([‘/about’]);
+
+7.  Route Parameters
+
+-   { path: ‘user/:id’, component: UserComponent }
+-   Access: this.route.params.subscribe(params => params[‘id’]);
+
+8.  Query Parameters
+
+-   this.router.navigate([‘/search’], { queryParams: { q: ‘angular’ }
+    });
+-   Access: this.route.queryParams.subscribe(params => params[‘q’]);
+
+9.  Child Routes (Nested)
+
+-   Define children under a parent route.
+
+10. Route Guards
+
+-   CanActivate, CanDeactivate, Resolve, CanLoad, CanActivateChild.
+
+11. Lazy Loading
+
+-   loadChildren: () => import(‘./module’).then(m => m.Module)
+
+12. Wildcard Routes
+
+-   { path: ’**’, component: NotFoundComponent }
