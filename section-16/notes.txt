@@ -1,1 +1,40 @@
-Deploying Angular Apps Notes
+Angular Deployment Notes
+
+1. CSR – Client Side Rendering
+
+- Browser renders everything after JS loads
+
+- Build: ng build --configuration production
+
+- Deploy /dist/ folder → static hosting (Firebase, Netlify, S3, etc.)
+
+- Add route fallback → index.html
+
+Pros: Easy, no server needed
+Cons: Poor SEO, slower first load
+
+2. SSR – Server Side Rendering
+
+- Uses Angular Universal
+
+- Server (Node.js) renders HTML → better SEO, faster first paint
+
+- Add: ng add @nguniversal/express-engine
+
+- Build: npm run build:ssr
+
+- Run: node dist/your-app-name/server/main.js
+
+Pros: Good SEO, handles dynamic data
+Cons: Needs Node server
+
+3. SSG – Static Site Generation
+
+- Pre-renders pages at build time
+
+- Command: ng run your-app-name:prerender
+
+- Deploy static output to hosting (Netlify, Vercel, etc.)
+
+Pros: Fastest load, SEO-friendly
+Cons: Rebuild needed for content changes
